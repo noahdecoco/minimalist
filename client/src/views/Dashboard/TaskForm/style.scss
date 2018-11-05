@@ -1,0 +1,15 @@
+.task-form {
+  input[type="text"] {
+    border: none;
+    width: 30rem;
+    text-align: center;
+    font-size: 1.4rem;
+    border-bottom: 1px solid black;
+    outline: none;
+    padding: 0.2rem 0.2rem 0.4rem;
+
+    &:focus {
+      border-bottom: 2px solid black;
+    }
+  }
+}

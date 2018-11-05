@@ -1,0 +1,33 @@
+.task-list {
+  position: relative;
+  width: 30rem;
+  height: 20rem;
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 3em 0;
+    box-sizing: border-box;
+    max-height: 20rem;
+    overflow: scroll;
+  }
+
+  .top-fade,
+  .bottom-fade {
+    content: "";
+    display: block;
+    height: 2em;
+    width: 100%;
+    position: absolute;
+  }
+
+  .top-fade {
+    top: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 100%);
+  }
+
+  .bottom-fade {
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 100%);
+  }
+}

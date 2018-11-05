@@ -1,0 +1,8 @@
+server/node_modules
+server/package-lock.json
+
+client/node_modules
+client/public
+client/package-lock.json
+client/build
+client/coverage
