@@ -1,0 +1,14 @@
+.app {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-column {
+    flex: 40%;
+    height: 100vh;
+}
+
+.right-column {
+    flex: 60%;
+    height: 100vh;
+}

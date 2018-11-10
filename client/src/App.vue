@@ -1,10 +1,5 @@
-<template>
-  <div>
-    <task-form/>
-    <task-list/>
-    <task-notes v-if="selectedTask" v-bind:task="selectedTask"></task-notes>
-  </div>
-</template>
+<style lang="scss" scoped src="./app.scss"></style>
+<template src="./app.html"></template>
 
 <script>
 import { mapGetters } from "vuex";
