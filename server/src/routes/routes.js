@@ -1,5 +1,5 @@
 const express = require("express");
-const TodoList = require("../models/TodoList");
+const Task = require("../models/Task");
 
 const app = express();
 const router = express.Router();
@@ -7,30 +7,22 @@ const router = express.Router();
 router
   .route("/")
   .get((req, res) => {
-    TodoList.find((error, tasks) =>
+    Task.find((error, tasks) =>
       error ? res.send(error) : res.json(tasks)
     );
   })
   .post((req, res) => {
-    console.log("posting...\n", JSON.stringify(req.body, null, 2));
-
-    const item = new TodoList(req.body);
+    const item = new Task(req.body);
     item
       .save()
-      .then(item => {
-        console.log("post ok");
-        return res.json(item);
-      })
-      .catch(error => {
-        console.log(error);
-        return res.status(400).send(error);
-      });
+      .then(item => res.json(item))
+      .catch(error => res.status(400).send(error));
   });
 
 router
   .route("/:id")
   .put((req, res) => {
-    TodoList.findById(req.params.id, (error, item) => {
+    Task.findById(req.params.id, (error, item) => {
       if (!item) {
         res.status(400).send("no item");
       } else {
@@ -43,7 +35,7 @@ router
     });
   })
   .delete((req, res) => {
-    TodoList.findByIdAndRemove({ _id: req.params.id }, (error, item) =>
+    Task.findByIdAndRemove({ _id: req.params.id }, (error, item) =>
       error ? res.json(err) : res.json(item)
     );
   });

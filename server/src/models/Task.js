@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const TodoList = new Schema(
+const Task = new Schema(
   {
     values: {
       type: String
@@ -26,8 +26,8 @@ const TodoList = new Schema(
     }
   },
   {
-    collection: "Tasks"
+    collection: "TaskList"
   }
 );
 
-module.exports = mongoose.model("TodoList", TodoList);
+module.exports = mongoose.model("Task", Task);
