@@ -7,16 +7,24 @@ const router = express.Router();
 router
   .route("/")
   .get((req, res) => {
-    TodoList.find(
-      (error, tasks) => (error ? res.send(error) : res.json(tasks))
+    TodoList.find((error, tasks) =>
+      error ? res.send(error) : res.json(tasks)
     );
   })
   .post((req, res) => {
+    console.log("posting...\n", JSON.stringify(req.body, null, 2));
+
     const item = new TodoList(req.body);
     item
       .save()
-      .then(item => res.json(item))
-      .catch(error => res.status(400).send(error));
+      .then(item => {
+        console.log("post ok");
+        return res.json(item);
+      })
+      .catch(error => {
+        console.log(error);
+        return res.status(400).send(error);
+      });
   });
 
 router
@@ -35,9 +43,8 @@ router
     });
   })
   .delete((req, res) => {
-    TodoList.findByIdAndRemove(
-      { _id: req.params.id },
-      (error, item) => (error ? res.json(err) : res.json(item))
+    TodoList.findByIdAndRemove({ _id: req.params.id }, (error, item) =>
+      error ? res.json(err) : res.json(item)
     );
   });
 

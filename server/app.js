@@ -10,7 +10,7 @@ const port = 6200;
 mongoose
   .connect("mongodb://mongodb")
   .then(() => {
-    console.log("Server OK");
+    console.log("Connected to mongodb");
   })
   .catch(err => {
     console.error("Backend error:", err.stack);

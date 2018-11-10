@@ -3,17 +3,26 @@ const Schema = mongoose.Schema;
 
 const TodoList = new Schema(
   {
+    values: {
+      type: String
+    },
     description: {
+      type: String
+    },
+    notes: {
       type: String
     },
     priority: {
       type: Number
     },
-    weight: {
+    effort: {
       type: Number
     },
-    completed: {
+    isCompleted: {
       type: Boolean
+    },
+    createdAt: {
+      type: String
     }
   },
   {
