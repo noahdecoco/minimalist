@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <task-form/>
     <task-list/>
     <task-notes v-if="selectedTask" v-bind:task="selectedTask"></task-notes>
@@ -14,7 +14,6 @@ import TaskList from "./components/TaskList";
 import TaskNotes from "./components/TaskNotes";
 
 export default {
-  name: "app",
   computed: {
     ...mapGetters(["selectedTask"])
   },
