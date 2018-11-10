@@ -1,0 +1,11 @@
+<div>
+  <button type="button" @click="unselectTask">Close</button>
+  <form>
+    <textarea
+      cols="50"
+      rows="5"
+      v-model="task.notes"
+      @blur="updateTask"
+    ></textarea>
+  </form>
+</div>

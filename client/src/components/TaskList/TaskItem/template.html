@@ -1,13 +1,20 @@
-<form ref="task-item-form">
-  <input type="checkbox" v-model="task.isCompleted" @change="updateTask"/>
-  <input type="text" v-model="task.description" @blur="updateTask"/>
-  <select v-model="task.priority" @change="updateTask">
-    <option v-for="(n, i) in 4">{{ i }}</option>
-  </select>
-  <select v-model="task.effort" @change="updateTask">
-    <option v-for="(n, i) in 11">{{ i }}</option>
-  </select>
-  <textarea cols="50" rows="5" v-model="task.notes" @blur="updateTask"></textarea>
-  <button type="button" @click="deleteTask">Delete</button>
-  <button type="button" @click="updateTask">Update</button>
-</form>
+<div>
+  <form @submit="updateTask">
+    <input type="checkbox" v-model="task.isCompleted" @change="updateTask" />
+    <input type="text" v-model="task.description" @blur="updateTask" />
+    <select v-model="task.priority" @change="updateTask">
+      <option v-for="(n, i) in 4">{{ i }}</option>
+    </select>
+    <select v-model="task.effort" @change="updateTask">
+      <option v-for="(n, i) in 11">{{ i }}</option>
+    </select>
+    <button type="button" @click="deleteTask">Delete</button>
+    <button type="button" @click="updateTask">Update</button>
+  </form>
+  <button v-if="!selectedTask" type="button" @click="selectTask">
+    Show notes
+  </button>
+  <button v-if="selectedTask" type="button" @click="unselectTask">
+    Hide notes
+  </button>
+</div>
