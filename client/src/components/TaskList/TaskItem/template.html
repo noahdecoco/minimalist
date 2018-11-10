@@ -11,10 +11,10 @@
     <button type="button" @click="deleteTask">Delete</button>
     <button type="button" @click="updateTask">Update</button>
   </form>
-  <button v-if="!selectedTask" type="button" @click="selectTask">
+  <button v-if="!isSelectedTask()" type="button" @click="selectTask">
     Show notes
   </button>
-  <button v-if="selectedTask" type="button" @click="unselectTask">
+  <button v-if="isSelectedTask()" type="button" @click="unselectTask">
     Hide notes
   </button>
 </div>

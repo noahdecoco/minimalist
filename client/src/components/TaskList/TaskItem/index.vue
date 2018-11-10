@@ -18,6 +18,9 @@ export default {
       document.activeElement.blur();
       this.$store.dispatch("updateTask", this.task);
     },
+    isSelectedTask() {
+      return this.selectedTask && this.selectedTask._id === this.task._id;
+    },
     selectTask() {
       this.$store.commit("setSelectedTask", this.task);
     },
