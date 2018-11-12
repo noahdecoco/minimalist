@@ -1,0 +1,38 @@
+.task-item {
+  display: flex;
+  padding: 0.2em 0.2em;
+  //   background: #eee;
+  border-radius: 10px;
+  // border: 1px solid #eee;
+  transition: transform 0.3s;
+
+  &.is-selected {
+    transform: translateX(1em);
+  }
+
+  form {
+    display: flex;
+    flex: 1;
+  }
+
+  .input-description {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin-left: 0.4em;
+    background: none;
+    outline: none;
+    flex: 100%;
+  }
+
+  .button-delete,
+  .button-toggle-selected-task {
+    opacity: 0;
+  }
+
+  &:hover {
+    .button-delete,
+    .button-toggle-selected-task {
+      opacity: 1;
+    }
+  }
+}

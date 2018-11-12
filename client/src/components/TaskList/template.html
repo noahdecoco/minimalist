@@ -1,7 +1,7 @@
 <div>
-    <ul>
-        <li v-for="task in tasks">
-            <task-item v-bind:task="task"></task-item>
-        </li>
-    </ul>
+  <transition-group name="task-list" tag="ul" class="task-list">
+    <li v-for="task in tasks" v-bind:key="task.createdAt" class="item">
+      <task-item v-bind:task="task"></task-item>
+    </li>
+  </transition-group>
 </div>

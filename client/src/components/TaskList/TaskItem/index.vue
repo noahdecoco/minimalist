@@ -21,11 +21,14 @@ export default {
     isSelectedTask() {
       return this.selectedTask && this.selectedTask._id === this.task._id;
     },
-    selectTask() {
-      this.$store.commit("setSelectedTask", this.task);
-    },
-    unselectTask() {
-      this.$store.commit("setSelectedTask", null);
+    toggleSelectedTask() {
+      let selectedTask;
+      if (this.selectedTask && this.selectedTask === this.task) {
+        selectedTask = null;
+      } else {
+        selectedTask = this.task;
+      }
+      this.$store.commit("setSelectedTask", selectedTask);
     }
   }
 };

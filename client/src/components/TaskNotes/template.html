@@ -1,9 +1,7 @@
 <div>
-  <button type="button" @click="unselectTask">Close</button>
+  <button type="button" @click="unselectTask">X</button>
   <form>
     <textarea
-      cols="50"
-      rows="5"
       placeholder="Enter your notes here"
       v-model="task.notes"
       @blur="updateTask"
