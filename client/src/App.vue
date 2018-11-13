@@ -16,6 +16,11 @@ export default {
     TaskForm,
     TaskList,
     TaskNotes
+  },
+  methods: {
+    unsetSelectedTask(){
+      this.$store.commit("setSelectedTask", null);
+    }
   }
 };
 </script>

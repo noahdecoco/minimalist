@@ -13,13 +13,13 @@
     <select v-model="task.effort" @change="updateTask">
       <option v-for="(n, i) in 11">{{ i }}</option>
     </select>
-    <button class="button-delete" type="button" @click="deleteTask">X</button>
+    <button class="button-delete" type="button" @click="deleteTask">-</button>
   </form>
   <button
     class="button-toggle-selected-task"
     type="button"
     @click="toggleSelectedTask"
   >
-    Notes
+    >
   </button>
 </div>

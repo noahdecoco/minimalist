@@ -1,4 +1,5 @@
 <div class="app">
+    <button v-if="selectedTask" class="button-unset-selected-task" @click="unsetSelectedTask"></button>
     <div class="left-column">
         <task-form/>
         <task-list/>
