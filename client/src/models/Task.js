@@ -5,12 +5,14 @@ class Task {
   values = "";
   description = "";
   notes = "";
-  priority = 0;
-  effort = 0;
+  priority = 4;
+  effort = 1;
   isCompleted = false;
   createdAt = new Date().getTime().toString();
 
   constructor(values) {
+    this._id = this.createdAt;
+
     this.values = values;
 
     this.description = this.removeFromValues(values, [

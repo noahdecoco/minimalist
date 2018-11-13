@@ -1,11 +1,7 @@
 .task-item {
   display: flex;
-  padding: 0.2em 0.2em 0.2em 0;
-  transition: transform 0.3s;
-
-  &.is-selected {
-    transform: translateX(1em);
-  }
+  padding: 0 0 1rem;
+  transition: opacity 0.3s;
 
   form {
     display: flex;
@@ -13,22 +9,55 @@
   }
 
   .input-description {
+    flex: 100%;
+    margin-left: 0.4rem;
+    outline: none;
     border: none;
     border-bottom: 1px solid #ddd;
-    margin-left: 0.4em;
     background: none;
-    outline: none;
-    flex: 100%;
   }
 
+  .input-is-completed,
   .button-delete,
   .button-toggle-selected-task {
+    outline: none;
     opacity: 0;
+    margin-left: 0.4rem;
+  }
+
+  select,
+  .button-delete,
+  .button-toggle-selected-task {
+    margin-left: 0.4rem;
   }
 
   &:hover {
+    opacity: 1;
+
+    .input-is-completed,
     .button-delete,
     .button-toggle-selected-task {
+      opacity: 1;
+    }
+  }
+
+  &.is-selected {
+    .input-is-completed,
+    .button-delete,
+    .button-toggle-selected-task {
+      opacity: 1;
+    }
+
+    .button-toggle-selected-task {
+      background: #333;
+      color: #ccc;
+    }
+  }
+
+  &.is-not-selected {
+    opacity: 0.1;
+
+    &:hover {
       opacity: 1;
     }
   }

@@ -21,7 +21,12 @@ export default {
     isSelectedTask() {
       return this.selectedTask && this.selectedTask._id === this.task._id;
     },
+    isNotSelectedTask() {
+      return this.selectedTask && this.selectedTask._id !== this.task._id;
+    },
     toggleSelectedTask() {
+      console.log('task', this.task);
+      
       let selectedTask;
       if (this.selectedTask && this.selectedTask === this.task) {
         selectedTask = null;

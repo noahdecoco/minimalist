@@ -1,6 +1,14 @@
-<div class="task-item" v-bind:class="{ 'is-selected': isSelectedTask() }">
+<div
+  class="task-item"
+  v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': isNotSelectedTask() }"
+>
   <form @submit="updateTask">
-    <input type="checkbox" v-model="task.isCompleted" @change="updateTask" />
+    <input
+      class="input-is-completed"
+      type="checkbox"
+      v-model="task.isCompleted"
+      @change="updateTask"
+    />
     <input
       class="input-description"
       type="text"
@@ -8,10 +16,10 @@
       @blur="updateTask"
     />
     <select v-model="task.priority" @change="updateTask">
-      <option v-for="(n, i) in 4">{{ i }}</option>
+      <option v-for="(n, i) in 4">{{ n }}</option>
     </select>
     <select v-model="task.effort" @change="updateTask">
-      <option v-for="(n, i) in 11">{{ i }}</option>
+      <option v-for="(n, i) in 10">{{ n }}</option>
     </select>
     <button class="button-delete" type="button" @click="deleteTask">-</button>
   </form>

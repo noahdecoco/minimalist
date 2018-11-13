@@ -32,6 +32,8 @@ export const store = new Vuex.Store({
       });
     },
     setSelectedTask(state, task) {
+      console.log(task);
+      
       state.selectedTask = task;
     }
   },
