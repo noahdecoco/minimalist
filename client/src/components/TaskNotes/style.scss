@@ -1,12 +1,15 @@
 .task-notes {
   display: flex;
+  align-self: stretch;
+  flex: 1;
   flex-direction: column;
-  width: 60%;
-  height: 70%;
 }
 
 .header {
-  text-align: right;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 2.5rem;
 }
 
 form {
@@ -56,6 +59,7 @@ form {
 }
 
 textarea {
+  overflow: auto;
   box-sizing: border-box;
   margin: 0;
   padding: 1rem;
@@ -68,6 +72,7 @@ textarea {
   color: #888;
   font-size: 1rem;
   line-height: 1.6rem;
+  resize: none;
 
   &::placeholder {
     color: #ccc;

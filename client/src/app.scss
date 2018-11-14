@@ -11,8 +11,10 @@ $padding: 10vw;
 }
 
 .left-column {
+  // background: lighten(#eee, 1);
+  display: flex;
   flex: 0 calc(40% - 5vw);
-  // background: lighten(#eee, 5);
+  flex-direction: column;
 }
 
 .right-column {
@@ -20,7 +22,7 @@ $padding: 10vw;
   align-items: center;
   flex: 0 calc(60% - 5vw);
   justify-content: center;
-  // background: lighten(#eee, 5);
+  // background: lighten(#eee, 1);
 }
 
 .button-unset-selected-task {
