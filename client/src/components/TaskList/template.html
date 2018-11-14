@@ -1,7 +1,11 @@
-<div>
-  <transition-group name="task-list" tag="ul" class="task-list">
-    <li v-for="task in tasks" v-bind:key="task.createdAt" class="item">
-      <task-item v-bind:task="task"></task-item>
-    </li>
-  </transition-group>
+<div class="task-list">
+  <div class="scroll-panel">
+    <transition-group name="task-list" tag="ul">
+      <li v-for="task in tasks" v-bind:key="task.createdAt">
+        <task-item v-bind:task="task"></task-item>
+      </li>
+    </transition-group>
+  </div>
+  <div class="fade top"></div>
+  <div class="fade bottom"></div>
 </div>
