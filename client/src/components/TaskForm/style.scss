@@ -3,7 +3,7 @@ form {
   color: #888;
   opacity: 0.5;
   transition: opacity 0.2s;
-  
+  height: 2.5rem;
   &:hover,
   &:focus-within {
     opacity: 1;
@@ -11,7 +11,7 @@ form {
 }
 
 input {
-  padding: 0.6rem 0.6rem 0.2rem;
+  padding: 0 0.6rem 1rem;
   width: 100%;
   outline: none;
   border: none;
@@ -33,7 +33,6 @@ input {
 }
 
 .underline {
-  margin-top: 0.5em;
   height: 1px;
   background: #ccc;
   transition: transform 0.3s ease-out;
