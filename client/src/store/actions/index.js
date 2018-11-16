@@ -1,42 +1,27 @@
-import axios from "axios";
-
 import Task from "../../models/Task";
+import PersistantStore from "./persistant-store";
 
-const baseUrl = "http://localhost:6200";
+const persistantStore = new PersistantStore();
 
 export default {
   getTasks(context) {
-    // axios
-    //   .get(`${baseUrl}/api`)
-    //   .then(({ data }) => context.commit("setTasks", data))
-    //   .catch(error => console.log(error));
+    const tasks = persistantStore.getItem("tasks");
+    if (tasks) context.commit("setTasks", tasks);
   },
   createTask(context, { values }) {
     const task = new Task(values);
-    context.commit("setTasks", [...context.state.tasks, task]);
-    // axios
-    //   .post(`${baseUrl}/api`, task)
-    //   .then(({ data }) => {
-    //     const tasks = context.state.tasks.map(item =>
-    //       item.createdAt === task.createdAt ? data : item
-    //     );
-    //     context.commit("setTasks", tasks);
-    //   })
-    //   .catch(error => console.log(error));
+    const tasks = [...context.state.tasks, task];
+    context.commit("setTasks", tasks);
+    persistantStore.setItem("tasks", tasks);
   },
   deleteTask(context, id) {
     const tasks = context.state.tasks.filter(item => item._id != id);
     context.commit("setTasks", tasks);
-    // axios
-    //   .delete(`${baseUrl}/api/${id}`)
-    //   .then(({ data }) => console.log(data))
-    //   .catch(error => console.log(error));
+    persistantStore.setItem("tasks", tasks);
   },
-  updateTask(context, task) {
-    context.commit("setTasks", context.state.tasks);
-    // axios
-    //   .put(`${baseUrl}/api/${task._id}`, task)
-    //   .then(({ data }) => console.log(data))
-    //   .catch(error => console.log(error));
+  updateTask(context) {
+    const tasks = context.state.tasks;
+    context.commit("setTasks", tasks);
+    persistantStore.setItem("tasks", tasks);
   }
 };
