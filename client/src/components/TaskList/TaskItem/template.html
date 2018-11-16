@@ -1,33 +1,47 @@
 <div
   class="task-item"
-  v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': isNotSelectedTask() }"
+  v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': isNotSelectedTask(), 'is-completed': task.isCompleted }"
 >
-  <form @submit="updateTask">
-    <input
-      class="input-is-completed"
-      type="checkbox"
-      v-model="task.isCompleted"
-      @change="updateTask"
-    />
+  <form @submit="updateTask" class="form">
+    <label v-bind:for="task._id" class="input-is-completed">
+      <input
+        v-bind:id="task._id"
+        type="checkbox"
+        v-model="task.isCompleted"
+        @change="updateTask"
+        title="Complete"
+      />
+    </label>
+
     <input
       class="input-description"
       type="text"
       v-model="task.description"
       @blur="updateTask"
     />
-    <select v-model="task.priority" @change="updateTask">
-      <option v-for="(n, i) in 4">{{ n }}</option>
-    </select>
-    <select v-model="task.effort" @change="updateTask">
-      <option v-for="(n, i) in 10">{{ n }}</option>
-    </select>
-    <button class="button-delete" type="button" @click="deleteTask">-</button>
-  </form>
-  <button
-    class="button-toggle-selected-task"
-    type="button"
-    @click="toggleSelectedTask"
-  >
+    <!--
+      <select v-model="task.priority" @change="updateTask">
+        <option v-for="(n, i) in 4">{{ n }}</option>
+      </select>
+      <select v-model="task.effort" @change="updateTask">
+        <option v-for="(n, i) in 10">{{ n }}</option>
+      </select>
+    -->
+    <button
+      class="button-notes"
+      type="button"
+      @click="toggleSelectedTask"
+      title="Add notes"
     >
-  </button>
+      &#9998;
+    </button>
+    <button
+      class="button-delete"
+      type="button"
+      @click="deleteTask"
+      title="Delete"
+    >
+      &#10005;
+    </button>
+  </form>
 </div>
