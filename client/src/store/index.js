@@ -21,6 +21,8 @@ export const store = new Vuex.Store({
   mutations: {
     setTasks(state, tasks) {
       state.tasks = tasks.sort((a, b) => {
+        if (a.isCompleted) return 1;
+        if (b.isCompleted) return -1;
         return a.priority - b.priority || a.effort - b.effort;
       });
     },
