@@ -1,3 +1,5 @@
+@import "../../styles/colors.scss";
+
 .task-notes {
   display: flex;
   align-self: stretch;
@@ -22,8 +24,7 @@ form {
 .line-3,
 .line-4 {
   position: absolute;
-  background: #ccc;
-  opacity: 0.5;
+  background: $tirtiary;
 }
 
 .line-1 {
@@ -75,7 +76,7 @@ textarea {
   resize: none;
 
   &::placeholder {
-    color: #ccc;
+    color: $tirtiary;
     transition: opacity 0.2s;
   }
 

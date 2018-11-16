@@ -1,17 +1,18 @@
+@import "../../styles/colors.scss";
+
 form {
   width: 100%;
-  color: #888;
-  opacity: 0.5;
-  transition: opacity 0.2s;
+  color: $secondary;
+  
   height: 2.5rem;
-  &:hover,
-  &:focus-within {
-    opacity: 1;
-  }
+  
 }
 
 input {
-  padding: 0 0.6rem 1rem;
+  // opacity: 0.3;
+  transition: opacity 0.3s;
+  
+  padding: 0 0.6rem 0.3rem 0;
   width: 100%;
   outline: none;
   border: none;
@@ -19,7 +20,7 @@ input {
   font-size: 1.2em;
 
   &::placeholder {
-    color: #ccc;
+    color: $tirtiary;
     transition: opacity 0.2s;
   }
 
@@ -30,12 +31,18 @@ input {
   &:focus::placeholder {
     opacity: 0;
   }
+
+  &::focus,
+  &:hover,
+  &:focus-within {
+    opacity: 1;
+  }
 }
 
 .underline {
   height: 1px;
-  background: #ccc;
+  background: $tirtiary;
   transition: transform 0.3s ease-out;
-  transform: scaleX(0.75);
+  transform: scaleX(0.67);
   transform-origin: left center;
 }

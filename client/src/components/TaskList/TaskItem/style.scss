@@ -1,61 +1,139 @@
+@import "../../../styles/colors.scss";
+
 .task-item {
   display: flex;
+  align-items: center;
   padding: 0 0 1rem;
   transition: opacity 0.3s;
 
   form {
     display: flex;
+    align-items: center;
+    // justify-content: space-between;
     flex: 1;
+  }
+
+  .input-is-completed {
+    display: none;
+  }
+
+  label[for="input-is-completed"] {
+    display: inline-block;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 1px solid $tirtiary;
+    border-radius: 0.2rem;
+    background: $primary;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    .is-completed {
+      background: $warning;
+    }
   }
 
   .input-description {
     flex: 100%;
-    margin-left: 0.4rem;
+    margin-left: 0.5rem;
+    padding-bottom: 0.1rem;
     outline: none;
     border: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $tirtiary;
     background: none;
+    color: $secondary;
+    font-size: 1rem;
+    transition: color 0.3s;
   }
 
-  .input-is-completed,
+  .button-delete {
+    flex-shrink: 0;
+    padding: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+    border: 1px solid $tirtiary;
+    border-radius: 0.2rem;
+    background: $primary;
+    background: none;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 0rem;
+    color: $warning;
+  }
+
+  .button-notes {
+    flex-shrink: 0;
+    padding: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+    border: 1px solid $tirtiary;
+    border-radius: 0.2rem;
+    // background: $primary;
+    background: none;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 0rem;
+    color: $secondary;
+  }
+
+  select,
+  // .input-is-completed,
   .button-delete,
-  .button-toggle-selected-task {
+  .button-notes {
+    margin-left: 0.4rem;
     outline: none;
     opacity: 0;
-    margin-left: 0.4rem;
+    transition: opacity 0.3s;
   }
 
   select,
   .button-delete,
-  .button-toggle-selected-task {
+  .button-notes {
     margin-left: 0.4rem;
+  }
+
+  &.is-completed {
+    opacity: 0.2;
+
+    label[for="input-is-completed"] {
+      background: $success;
+    }
+    .input-description {
+      text-decoration: line-through;
+    }
   }
 
   &:hover {
     opacity: 1;
 
+    select,
     .input-is-completed,
     .button-delete,
-    .button-toggle-selected-task {
+    .button-notes {
       opacity: 1;
     }
   }
 
   &.is-selected {
     .input-is-completed,
+    select,
     .button-delete,
-    .button-toggle-selected-task {
+    .button-notes {
       opacity: 1;
     }
 
-    .button-toggle-selected-task {
+    .button-notes {
       background: #333;
       color: #ccc;
     }
   }
 
   &.is-not-selected {
-    opacity: 0.1;
+    // opacity: 0.5;
+    .input-description {
+      color: $tirtiary;
+    }
 
     &:hover {
       opacity: 1;

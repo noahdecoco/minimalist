@@ -1,33 +1,37 @@
 <div
   class="task-item"
-  v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': isNotSelectedTask() }"
+  v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': isNotSelectedTask(), 'is-completed': task.isCompleted }"
 >
   <form @submit="updateTask">
-    <input
-      class="input-is-completed"
-      type="checkbox"
-      v-model="task.isCompleted"
-      @change="updateTask"
-    />
+    <label for="input-is-completed" @click="toggleIsCompleted">
+      <input
+        class="input-is-completed"
+        type="checkbox"
+        v-model="task.isCompleted"
+        @change="updateTask"
+        title="Complete"
+      />
+    </label>
     <input
       class="input-description"
       type="text"
       v-model="task.description"
       @blur="updateTask"
     />
-    <select v-model="task.priority" @change="updateTask">
-      <option v-for="(n, i) in 4">{{ n }}</option>
-    </select>
-    <select v-model="task.effort" @change="updateTask">
-      <option v-for="(n, i) in 10">{{ n }}</option>
-    </select>
-    <button class="button-delete" type="button" @click="deleteTask">-</button>
+    <!--
+      <select v-model="task.priority" @change="updateTask">
+        <option v-for="(n, i) in 4">{{ n }}</option>
+      </select>
+      <select v-model="task.effort" @change="updateTask">
+        <option v-for="(n, i) in 10">{{ n }}</option>
+      </select>
+    -->
+    <button class="button-delete" type="button" @click="deleteTask" title="Delete">
+      &#10005;
+    </button>
   </form>
-  <button
-    class="button-toggle-selected-task"
-    type="button"
-    @click="toggleSelectedTask"
-  >
-    >
+
+  <button class="button-notes" type="button" @click="toggleSelectedTask"  title="Add notes">
+    &#9998;
   </button>
 </div>
