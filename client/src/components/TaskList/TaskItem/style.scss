@@ -3,22 +3,17 @@
 .task-item {
   display: flex;
   align-items: center;
-  padding: 0 0 1rem;
+  margin-bottom: 1rem;
+  padding: 0;
   transition: opacity 0.3s;
 
-  form {
+  .form {
     display: flex;
     align-items: center;
-    // justify-content: space-between;
     flex: 1;
   }
 
   .input-is-completed {
-    display: none;
-  }
-
-  label[for="input-is-completed"] {
-    display: inline-block;
     flex-shrink: 0;
     box-sizing: border-box;
     width: 0.8rem;
@@ -29,113 +24,91 @@
     cursor: pointer;
     transition: background-color 0.2s;
 
-    .is-completed {
-      background: $warning;
+    input {
+      display: none;
     }
   }
 
   .input-description {
     flex: 100%;
-    margin-left: 0.5rem;
+    margin-left: 0.4rem;
     padding-bottom: 0.1rem;
     outline: none;
     border: none;
     border-bottom: 1px solid $tirtiary;
-    background: none;
+    background: $primary;
     color: $secondary;
     font-size: 1rem;
     transition: color 0.3s;
   }
 
+  .button-notes,
   .button-delete {
     flex-shrink: 0;
     padding: 0;
     width: 1.4rem;
     height: 1.4rem;
+    outline: none;
     border: 1px solid $tirtiary;
     border-radius: 0.2rem;
     background: $primary;
-    background: none;
+    color: $warning;
     text-align: center;
     font-size: 1rem;
     line-height: 0rem;
+    opacity: 0;
+    cursor: pointer;
+    transition: background 0.3s, opacity 0.3s;
+
+    &:hover {
+      background: $tirtiary;
+    }
+  }
+
+  .button-delete {
+    margin-left: 0.2rem;
     color: $warning;
   }
 
   .button-notes {
-    flex-shrink: 0;
-    padding: 0;
-    width: 1.4rem;
-    height: 1.4rem;
-    border: 1px solid $tirtiary;
-    border-radius: 0.2rem;
-    // background: $primary;
-    background: none;
-    text-align: center;
-    font-size: 1rem;
-    line-height: 0rem;
+    margin-left: 0.6rem;
     color: $secondary;
-  }
-
-  select,
-  // .input-is-completed,
-  .button-delete,
-  .button-notes {
-    margin-left: 0.4rem;
-    outline: none;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  select,
-  .button-delete,
-  .button-notes {
-    margin-left: 0.4rem;
   }
 
   &.is-completed {
     opacity: 0.2;
 
-    label[for="input-is-completed"] {
+    .input-is-completed {
       background: $success;
     }
+
     .input-description {
       text-decoration: line-through;
+    }
+  }
+
+  &.is-selected {
+    .button-notes {
+      opacity: 1;
+    }
+
+    .button-notes {
+      background: $secondary;
+      color: $primary;
+    }
+  }
+
+  &.is-not-selected {
+    .input-description {
+      color: $tirtiary;
     }
   }
 
   &:hover {
     opacity: 1;
 
-    select,
-    .input-is-completed,
     .button-delete,
     .button-notes {
-      opacity: 1;
-    }
-  }
-
-  &.is-selected {
-    .input-is-completed,
-    select,
-    .button-delete,
-    .button-notes {
-      opacity: 1;
-    }
-
-    .button-notes {
-      background: #333;
-      color: #ccc;
-    }
-  }
-
-  &.is-not-selected {
-    // opacity: 0.5;
-    .input-description {
-      color: $tirtiary;
-    }
-
-    &:hover {
       opacity: 1;
     }
   }

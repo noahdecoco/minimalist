@@ -2,40 +2,31 @@
 
 form {
   width: 100%;
-  color: $secondary;
-  
   height: 2.5rem;
-  
+  color: $secondary;
 }
 
 input {
-  // opacity: 0.3;
-  transition: opacity 0.3s;
-  
   padding: 0 0.6rem 0.3rem 0;
   width: 100%;
   outline: none;
   border: none;
   background: none;
   font-size: 1.2em;
+  transition: opacity 0.3s;
 
   &::placeholder {
     color: $tirtiary;
     transition: opacity 0.2s;
   }
 
-  &:focus + .underline {
-    transform: scaleX(1);
+  &:focus + .underline,
+  &:hover + .underline {
+    transform: scaleY(2);
   }
 
   &:focus::placeholder {
     opacity: 0;
-  }
-
-  &::focus,
-  &:hover,
-  &:focus-within {
-    opacity: 1;
   }
 }
 
@@ -43,6 +34,6 @@ input {
   height: 1px;
   background: $tirtiary;
   transition: transform 0.3s ease-out;
-  transform: scaleX(0.67);
-  transform-origin: left center;
+  transform: scaleY(1);
+  transform-origin: left top;
 }

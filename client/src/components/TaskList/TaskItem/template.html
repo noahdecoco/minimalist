@@ -2,16 +2,17 @@
   class="task-item"
   v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': isNotSelectedTask(), 'is-completed': task.isCompleted }"
 >
-  <form @submit="updateTask">
-    <label for="input-is-completed" @click="toggleIsCompleted">
+  <form @submit="updateTask" class="form">
+    <label v-bind:for="task._id" class="input-is-completed">
       <input
-        class="input-is-completed"
+        v-bind:id="task._id"
         type="checkbox"
         v-model="task.isCompleted"
         @change="updateTask"
         title="Complete"
       />
     </label>
+
     <input
       class="input-description"
       type="text"
@@ -26,12 +27,21 @@
         <option v-for="(n, i) in 10">{{ n }}</option>
       </select>
     -->
-    <button class="button-delete" type="button" @click="deleteTask" title="Delete">
+    <button
+      class="button-notes"
+      type="button"
+      @click="toggleSelectedTask"
+      title="Add notes"
+    >
+      &#9998;
+    </button>
+    <button
+      class="button-delete"
+      type="button"
+      @click="deleteTask"
+      title="Delete"
+    >
       &#10005;
     </button>
   </form>
-
-  <button class="button-notes" type="button" @click="toggleSelectedTask"  title="Add notes">
-    &#9998;
-  </button>
 </div>
