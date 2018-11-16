@@ -21,19 +21,10 @@ export const store = new Vuex.Store({
   mutations: {
     setTasks(state, tasks) {
       state.tasks = tasks.sort((a, b) => {
-        // if (a.priority === 0) return 1;
-        // if (b.priority === 0) return -1;
-
-        // if (a.priority === b.priority) {
-        //   return a.effort > b.effort ? -1 : 1;
-        // }
-
         return a.priority - b.priority || a.effort - b.effort;
       });
     },
     setSelectedTask(state, task) {
-      console.log(task);
-      
       state.selectedTask = task;
     }
   },
