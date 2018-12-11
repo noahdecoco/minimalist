@@ -11,6 +11,11 @@ export default {
     unselectTask() {
       this.$store.commit("setSelectedTask", null);
     }
+  },
+  watch: {
+    task: function(value) {
+      console.log('changed', value);
+    }
   }
 };
 </script>

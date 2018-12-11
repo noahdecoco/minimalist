@@ -19,14 +19,21 @@
       v-model="task.description"
       @blur="updateTask"
     />
-    <!--
-      <select v-model="task.priority" @change="updateTask">
-        <option v-for="(n, i) in 4">{{ n }}</option>
-      </select>
-      <select v-model="task.effort" @change="updateTask">
-        <option v-for="(n, i) in 10">{{ n }}</option>
-      </select>
-    -->
+
+    <CustomSelect
+      v-bind:options="5"
+      v-bind:value="task.priority"
+      v-bind:name="'priority'"
+      @change="onSelectionChange"
+    ></CustomSelect>
+
+    <CustomSelect
+      v-bind:options="5"
+      v-bind:value="task.effort"
+      v-bind:name="'effort'"
+      @change="onSelectionChange"
+    ></CustomSelect>
+
     <button
       class="button-notes"
       type="button"

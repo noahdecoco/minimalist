@@ -3,15 +3,26 @@
 
 <script>
 import { mapGetters } from "vuex";
+import CustomSelect from "./Select";
 
 export default {
   props: ["task"],
   computed: {
     ...mapGetters(["selectedTask"])
   },
+  components: {
+    CustomSelect
+  },
   methods: {
     deleteTask() {
+      if (this.selectedTask === this.task) {
+        this.$store.commit("setSelectedTask", null);
+      }
       this.$store.dispatch("deleteTask", this.task._id);
+    },
+    onSelectionChange(payload) {
+      this.task[payload.name] = payload.value;
+      this.$store.dispatch("updateTask", this.task);
     },
     updateTask(event) {
       event.preventDefault();

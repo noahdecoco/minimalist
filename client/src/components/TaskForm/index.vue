@@ -16,7 +16,6 @@ export default {
       this.$store.dispatch("createTask", { values });
       input.value = "";
     }
-  },
-  components: {}
+  }
 };
 </script>

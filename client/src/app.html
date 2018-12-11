@@ -5,6 +5,8 @@
         <task-list/>
     </div>
     <div class="right-column">
-        <task-notes v-if="selectedTask" v-bind:task="selectedTask"></task-notes>
+        <!-- <transition name="fade"> -->
+            <task-notes v-if="selectedTask" v-bind:task="selectedTask"></task-notes>
+        <!-- </transition> -->
     </div>
 </div>

@@ -1,14 +1,18 @@
-<div class="task-notes">
-  <div class="header">
-    <button class="button-close" type="button" @click="unselectTask">&#10005;</button>
+<transition name="fade">
+  <div class="task-notes">
+    <div class="header">
+      <button class="button-close" type="button" @click="unselectTask">
+        &#10005;
+      </button>
+    </div>
+    <form>
+      <span class="line-1"></span> <span class="line-2"></span>
+      <span class="line-3"></span> <span class="line-4"></span>
+        <textarea class="textarea"
+          placeholder="Enter your notes here"
+          v-model="task.notes"
+          @blur="updateTask"
+        ></textarea>
+    </form>
   </div>
-  <form>
-    <span class="line-1"></span> <span class="line-2"></span>
-    <span class="line-3"></span> <span class="line-4"></span>
-    <textarea
-      placeholder="Enter your notes here"
-      v-model="task.notes"
-      @blur="updateTask"
-    ></textarea>
-  </form>
-</div>
+</transition>

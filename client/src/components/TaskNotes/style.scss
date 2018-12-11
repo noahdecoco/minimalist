@@ -12,6 +12,7 @@
   align-items: flex-end;
   justify-content: flex-end;
   height: 2.5rem;
+  overflow: hidden;
 }
 
 .button-close {
@@ -27,10 +28,10 @@
   color: $tirtiary;
   text-align: center;
   font-size: 1rem;
-  transform: translateY(1px);
   line-height: 0rem;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.4s ease-in-out;
+  transform: translateY(1px);
 
   &:hover {
     color: $secondary;
@@ -48,6 +49,7 @@ form {
 .line-4 {
   position: absolute;
   background: $tirtiary;
+  transition: transform 1s;
 }
 
 .line-1 {
@@ -55,26 +57,12 @@ form {
   width: calc(100% - 1.4rem);
   height: 1px;
   transform: scaleX(1);
-  transform-origin: right;
+  transform-origin: left;
+  transition: transform 1.2s;
 }
 
 .line-2 {
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  transform: scaleX(0.3);
-  transform-origin: right;
-}
-
-.line-3 {
-  left: 0;
-  width: 1px;
-  height: 100%;
-  transform: scaleY(1);
-  transform-origin: top;
-}
-
-.line-4 {
+  transition: transform 1.2s;
   right: 0;
   width: 1px;
   height: 100%;
@@ -82,7 +70,26 @@ form {
   transform-origin: bottom;
 }
 
+.line-3 {
+  transition: transform 1.2s;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0.3);
+  transform-origin: right;
+}
+
+.line-4 {
+  transition: transform 1s;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
 textarea {
+  transition: opacity 0.8s;
   overflow: auto;
   box-sizing: border-box;
   margin: 0;
@@ -104,6 +111,46 @@ textarea {
   }
 
   &:focus::placeholder {
+    opacity: 0;
+  }
+}
+
+.fade-enter-active {
+  transition: opacity 0.3s;
+
+  .button-close {
+    transition-delay: 1s;
+  }
+}
+
+.fade-leave-active {
+  transition: opacity 0.3s;
+  transition-delay: 0.9s;
+
+  .line-1 {
+    transition-delay: 0.3s;
+  }
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+
+  .line-1,
+  .line-3 {
+    transform: scaleX(0);
+  }
+
+  .line-2,
+  .line-4 {
+    transform: scaleY(0);
+  }
+
+  .button-close {
+    transform: translateY(1.4rem);
+  }
+
+  .textarea {
     opacity: 0;
   }
 }
