@@ -1,12 +1,12 @@
 <template>
-    <select @change="onChangeHandler" v-model="selectedValue">
-      <option v-for="n in options" v-bind:key="n" v-bind:value="n">{{ n }}</option>
-    </select>
+  <select @change="onChangeHandler" v-model="selectedValue">
+    <option v-for="n in options" v-bind:key="n" v-bind:value="n">{{labelPrefix}}{{n}}</option>
+  </select>
 </template>
 
 <script>
 export default {
-  props: ["options", "value", "name"],
+  props: ["options", "value", "name", "labelPrefix"],
   data: () => ({
     selectedValue: null
   }),

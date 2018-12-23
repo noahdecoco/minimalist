@@ -5,7 +5,9 @@ class Task {
   values = "";
   description = "";
   notes = "";
+  priorityOptions = 4;
   priority = 4;
+  effortOptions = 4;
   effort = 1;
   isCompleted = false;
   createdAt = new Date().getTime().toString();
@@ -26,7 +28,11 @@ class Task {
       this.priority
     );
 
-    this.effort = this.extractNumberFromValues(values, EFFORTS_REGEX, this.effort);
+    this.effort = this.extractNumberFromValues(
+      values,
+      EFFORTS_REGEX,
+      this.effort
+    );
   }
 
   extractNumberFromValues(values, regex, currentValue) {
