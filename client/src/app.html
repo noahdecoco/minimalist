@@ -1,12 +1,9 @@
 <div class="app">
-    <!-- <button v-if="selectedTask" class="button-unset-selected-task" @click="unsetSelectedTask"></button> -->
     <div class="left-column">
         <task-form/>
         <task-list/>
     </div>
     <div class="right-column">
-        <!-- <transition name="fade"> -->
-            <task-notes v-if="selectedTask" v-bind:task="selectedTask"></task-notes>
-        <!-- </transition> -->
+        <task-notes v-if="selectedTask" v-bind:task="selectedTask"></task-notes>
     </div>
 </div>

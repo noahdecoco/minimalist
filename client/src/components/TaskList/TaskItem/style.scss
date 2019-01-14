@@ -52,27 +52,27 @@
     border: 1px solid $tirtiary;
     border-radius: 0.2rem;
     background: $primary;
-    color: $warning;
+    color: $tirtiary;
     text-align: center;
     font-size: 1rem;
     line-height: 0rem;
     opacity: 0;
     cursor: pointer;
-    transition: background 0.3s, opacity 0.3s;
-
-    &:hover {
-      background: $tirtiary;
-    }
+    transition: color 0.3s, background 0.3s, opacity 0.3s;
   }
 
   .button-delete {
     margin-left: 0.2rem;
-    color: $warning;
+    &:hover {
+      color: $warning;
+    }
   }
 
   .button-notes {
-    margin-left: 0.6rem;
-    color: $secondary;
+    margin-left: 0.2rem;
+    &:hover {
+      color: $secondary;
+    }
   }
 
   &.is-completed {
