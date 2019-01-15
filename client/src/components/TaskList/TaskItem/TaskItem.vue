@@ -101,6 +101,8 @@ export default {
   padding: 0.5rem 0;
   transition: opacity 0.3s;
   border-bottom: 1px solid transparent;
+  z-index: 0;
+  position: relative;
 
   .form {
     display: flex;
@@ -157,7 +159,7 @@ export default {
   }
 
   .select {
-    opacity: 0;
+    // opacity: 0;
     transition: opacity 0.3s;
   }
 
@@ -211,6 +213,7 @@ export default {
   &:hover {
     opacity: 1;
     border-bottom: 1px solid $tirtiary;
+    z-index: 1;
 
     .button-delete,
     .button-notes,

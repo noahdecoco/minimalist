@@ -1,11 +1,15 @@
 <template>
-  <div @click="clickHandler()" class="select-wrapper">
-    <div class="selected-value">
-      <span>{{selectedValue}}</span>
+  <div class="select-wrapper">
+    <div class="mask">
+      <div class="selected-value">
+        <span>{{selectedValue}}</span>
+      </div>
+      <ul>
+        <li v-for="n in options" v-bind:key="n" @click="clickHandler(n)">
+          <span>{{n}}</span>
+        </li>
+      </ul>
     </div>
-    <ul>
-      <li v-for="n in options" v-bind:key="n">{{n}}</li>
-    </ul>
   </div>
 </template>
 
@@ -30,7 +34,12 @@ export default {
         value: this.selectedValue
       });
     },
-    clickHandler() {}
+    clickHandler(value) {
+      this.$emit("change", {
+        name: this.name,
+        value
+      });
+    }
   }
 };
 </script>
@@ -42,17 +51,25 @@ export default {
   width: 1.4rem;
   height: 1.4rem;
   flex: 0 0 1.4rem;
-  border-radius: 1rem;
+  box-sizing: border-box;
   margin-left: 0.2rem;
-  border: 1px solid $tirtiary;
-  // box-sizing: border-box;
-  overflow: hidden;
-  color: $tirtiary;
   cursor: pointer;
-  transition: color 0.2s;
-
   &:hover {
-    color: $secondary;
+    .selected-value {
+      color: $secondary;
+    }
+  }
+}
+
+.mask {
+  border: 1px solid $tirtiary;
+  border-radius: 0.7rem;
+  height: 1.4rem;
+  overflow: hidden;
+  transition: height 0.3s;
+  background: $primary;
+  &:hover {
+    height: 1.4rem * 5;
   }
 }
 
@@ -62,10 +79,30 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  // text-align: center;
-  // line-height: 1.4rem;
   font-family: sans-serif;
-
+  transition: color 0.2s;
+  color: $tirtiary;
   font-size: 0.8rem;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  color: $tirtiary;
+  transition: color 0.2s;
+  width: 1.4rem;
+  height: 1.4rem;
+  &:hover {
+    color: $secondary;
+  }
 }
 </style>
