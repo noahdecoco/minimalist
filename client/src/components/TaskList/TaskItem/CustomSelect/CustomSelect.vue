@@ -30,15 +30,13 @@ export default {
         value: this.selectedValue
       });
     },
-    clickHandler() {
-      console.log("clicked");
-    }
+    clickHandler() {}
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../../../styles/colors.scss";
+@import "@/styles/colors.scss";
 
 .select-wrapper {
   width: 1.4rem;
@@ -52,7 +50,7 @@ export default {
   color: $tirtiary;
   cursor: pointer;
   transition: color 0.2s;
-  
+
   &:hover {
     color: $secondary;
   }

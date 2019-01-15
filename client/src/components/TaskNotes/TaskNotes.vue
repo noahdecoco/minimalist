@@ -1,4 +1,41 @@
-@import "../../styles/colors.scss";
+<template>
+  <transition name="fade">
+    <div class="task-notes">
+      <div class="header">
+        <button class="button-close" type="button" @click="unselectTask">&#10005;</button>
+      </div>
+      <form>
+        <span class="line-1"></span>
+        <span class="line-2"></span>
+        <span class="line-3"></span>
+        <span class="line-4"></span>
+        <textarea
+          class="textarea"
+          placeholder="Enter your notes here"
+          v-model="task.notes"
+          @blur="updateTask"
+        ></textarea>
+      </form>
+    </div>
+  </transition>
+</template>
+
+<script>
+export default {
+  props: ["task"],
+  methods: {
+    updateTask() {
+      this.$store.dispatch("updateTask", this.task);
+    },
+    unselectTask() {
+      this.$store.commit("setSelectedTask", null);
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+@import "@/styles/colors.scss";
 
 .task-notes {
   display: flex;
@@ -154,3 +191,4 @@ textarea {
     opacity: 0;
   }
 }
+</style>

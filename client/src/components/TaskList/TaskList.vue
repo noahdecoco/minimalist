@@ -1,4 +1,36 @@
-@import "../../styles/colors.scss";
+<template>
+  <div class="task-list">
+    <div class="scroll-panel">
+      <transition-group name="task-list" tag="ul">
+        <li v-for="task in tasks" v-bind:key="task.createdAt">
+          <task-item v-bind:task="task"></task-item>
+        </li>
+      </transition-group>
+    </div>
+    <div class="fade top"></div>
+    <div class="fade bottom"></div>
+  </div>
+</template>
+
+<script>
+import TaskItem from "./TaskItem/TaskItem";
+import { mapGetters } from "vuex";
+
+export default {
+  computed: {
+    ...mapGetters(["tasks"])
+  },
+  components: {
+    TaskItem
+  },
+  mounted() {
+    this.$store.dispatch("getTasks");
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+@import "@/styles/colors.scss";
 
 .task-list {
   position: relative;
@@ -58,3 +90,4 @@ li {
   position: absolute;
   left: 0;
 }
+</style>
