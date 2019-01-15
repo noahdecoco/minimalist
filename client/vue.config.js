@@ -10,7 +10,7 @@ module.exports = {
   },
   chainWebpack: config => {
     config.plugin("html").tap(args => {
-      args[0].title = "some title or the other";
+      args[0].template = "src/index.html";
       return args;
     });
   }

@@ -48,7 +48,7 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  height: 2.5rem;
+  margin-top: 0.5rem;
   overflow: hidden;
 }
 

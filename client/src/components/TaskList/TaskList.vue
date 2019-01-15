@@ -76,7 +76,7 @@ ul {
 
 li {
   display: inline-block;
-  margin-bottom: 0.5em;
+  // margin-bottom: 0.5em;
   width: 100%;
   transition: all 0.3s;
 }

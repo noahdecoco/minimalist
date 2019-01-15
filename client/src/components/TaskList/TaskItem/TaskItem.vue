@@ -17,6 +17,7 @@
       <input class="input-description" type="text" v-model="task.description" @blur="updateTask">
 
       <CustomSelect
+        class="select"
         v-bind:options="task.priorityOptions"
         v-bind:value="task.priority"
         v-bind:labelPrefix="'!'"
@@ -25,6 +26,7 @@
       ></CustomSelect>
 
       <CustomSelect
+        class="select"
         v-bind:options="task.effortOptions"
         v-bind:value="task.effort"
         v-bind:labelPrefix="'#'"
@@ -91,14 +93,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../styles/colors.scss";
+@import "@/styles/colors.scss";
 
 .task-item {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
-  padding: 0;
+  padding: 0.5rem 0;
   transition: opacity 0.3s;
+  border-bottom: 1px solid transparent;
 
   .form {
     display: flex;
@@ -128,7 +130,7 @@ export default {
     padding-bottom: 0.1rem;
     outline: none;
     border: none;
-    border-bottom: 1px solid $tirtiary;
+
     background: $primary;
     color: $secondary;
     font-size: 1rem;
@@ -152,6 +154,11 @@ export default {
     opacity: 0;
     cursor: pointer;
     transition: color 0.3s, background 0.3s, opacity 0.3s;
+  }
+
+  .select {
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 
   .button-delete {
@@ -178,6 +185,10 @@ export default {
     .input-description {
       text-decoration: line-through;
     }
+
+    .select {
+      opacity: 0;
+    }
   }
 
   &.is-selected {
@@ -199,9 +210,11 @@ export default {
 
   &:hover {
     opacity: 1;
+    border-bottom: 1px solid $tirtiary;
 
     .button-delete,
-    .button-notes {
+    .button-notes,
+    .select {
       opacity: 1;
     }
   }

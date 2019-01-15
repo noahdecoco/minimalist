@@ -34,12 +34,11 @@ export default {
 
 form {
   width: 100%;
-  height: 2.5rem;
   color: $secondary;
 }
 
 input {
-  padding: 0 0.6rem 0.3rem 0;
+  padding: 0;
   width: 100%;
   outline: none;
   border: none;
@@ -68,5 +67,6 @@ input {
   transition: transform 0.3s ease-out;
   transform: scaleY(1);
   transform-origin: left top;
+  margin-top: 0.5rem;
 }
 </style>
