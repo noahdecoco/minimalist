@@ -1,7 +1,7 @@
 <template>
   <div
     class="task-item"
-    v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': isNotSelectedTask(), 'is-completed': task.isCompleted }"
+    v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': !isSelectedTask(), 'is-completed': task.isCompleted }"
   >
     <form @submit="updateTask" class="form">
       <label v-bind:for="task._id" class="input-is-completed">
@@ -14,13 +14,7 @@
         >
       </label>
       
-      <input
-        class="input-description"
-        type="text"
-        v-model="task.description"
-        @blur="updateTask"
-        @focus="selectTask"
-      >
+      <input class="input-description" type="text" v-model="task.description" @blur="updateTask">
 
       <CustomSelect
         class="select"
@@ -70,9 +64,6 @@ export default {
       }
       this.$store.dispatch("deleteTask", this.task._id);
     },
-    selectTask(task) {
-      this.$store.commit("setSelectedTask", task);
-    },
     onSelectionChange(payload) {
       this.task[payload.name] = payload.value;
       this.$store.dispatch("updateTask", this.task);
@@ -80,20 +71,17 @@ export default {
     updateTask(event) {
       event.preventDefault();
       document.activeElement.blur();
-      this.selectTask(null);
+      this.$store.commit("setSelectedTask", null);
       this.$store.dispatch("updateTask", this.task);
     },
     isSelectedTask() {
       return this.selectedTask && this.selectedTask._id === this.task._id;
     },
-    isNotSelectedTask() {
-      return this.selectedTask && this.selectedTask._id !== this.task._id;
-    },
     toggleSelectedTask() {
       if (this.selectedTask && this.selectedTask === this.task) {
-        this.selectTask(null);
+        this.$store.commit("setSelectedTask", null);
       } else {
-        this.selectTask(this.task);
+        this.$store.commit("setSelectedTask", this.task);
       }
     }
   }
