@@ -61,7 +61,7 @@ export default {
   border: 1px solid $tirtiary;
   border-bottom: 0;
   border-radius: 0.2rem 0.2rem 0 0;
-  background: $primary;
+  background: rgba($secondary, 0.01);
   color: $tirtiary;
   text-align: center;
   font-size: 1rem;
@@ -136,10 +136,10 @@ textarea {
   outline: 0;
   border: none;
   border: 0;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba($secondary, 0.01);
   color: #888;
-  font-size: 1.4rem;
-  line-height: 1.6rem;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
   resize: none;
   font-family: "Caveat", cursive;
 
