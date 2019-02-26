@@ -2,7 +2,7 @@
   <form v-on:submit="onSubmitHandler">
     <input
       type="text"
-      placeholder="Add a task [!priority] [#effort]"
+      placeholder="Add a task !priority #effort"
       name="task-values"
       autocomplete="off"
     >

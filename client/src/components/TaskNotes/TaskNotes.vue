@@ -68,7 +68,7 @@ export default {
   line-height: 0rem;
   cursor: pointer;
   transition: color 0.3s, transform 0.4s ease-in-out;
-  transform: translateY(1px);
+  transform: translateY(2px);
 
   &:hover {
     color: $secondary;
@@ -103,7 +103,7 @@ form {
   right: 0;
   width: 1px;
   height: 100%;
-  transform: scaleY(0.3);
+  transform: scaleY(1);
   transform-origin: bottom;
 }
 
@@ -112,7 +112,7 @@ form {
   bottom: 0;
   width: 100%;
   height: 1px;
-  transform: scaleX(0.3);
+  transform: scaleX(1);
   transform-origin: right;
 }
 
@@ -130,17 +130,18 @@ textarea {
   overflow: auto;
   box-sizing: border-box;
   margin: 0;
-  padding: 1rem;
+  padding: 2rem;
   width: 100%;
   height: 100%;
   outline: 0;
   border: none;
   border: 0;
-  background: none;
+  background: rgba(255, 255, 255, 0.1);
   color: #888;
-  font-size: 1rem;
+  font-size: 1.4rem;
   line-height: 1.6rem;
   resize: none;
+  font-family: "Caveat", cursive;
 
   &::placeholder {
     color: $tirtiary;
