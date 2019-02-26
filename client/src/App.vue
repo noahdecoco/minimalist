@@ -24,11 +24,6 @@ export default {
     TaskForm,
     TaskList,
     TaskNotes
-  },
-  methods: {
-    unsetSelectedTask() {
-      this.$store.commit("setSelectedTask", null);
-    }
   }
 };
 </script>
@@ -36,14 +31,12 @@ export default {
 <style lang="scss" scoped >
 @import "./styles/colors.scss";
 
-$padding: 10vw;
-
 .app {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: $padding;
+  padding: 10vh 10vw;
   width: 100%;
   height: 100%;
   background: $primary;
@@ -51,26 +44,14 @@ $padding: 10vw;
 
 .left-column {
   display: flex;
-  flex: 0 calc(40% - 5vw);
+  flex: 0 calc(60% - 5vw);
   flex-direction: column;
 }
 
 .right-column {
   display: flex;
   align-items: center;
-  flex: 0 calc(60% - 5vw);
+  flex: 0 calc(40% - 5vw);
   justify-content: center;
-}
-
-.button-unset-selected-task {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  border-radius: 0;
-  opacity: 0;
 }
 </style>

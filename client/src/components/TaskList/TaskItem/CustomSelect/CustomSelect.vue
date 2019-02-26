@@ -48,10 +48,8 @@ export default {
 @import "@/styles/colors.scss";
 
 .select-wrapper {
-  width: 1.4rem;
-  height: 1.4rem;
-  flex: 0 0 1.4rem;
-  box-sizing: border-box;
+  width: calc(1.4rem + 2px);
+  height: calc(1.4rem + 2px);
   margin-left: 0.2rem;
   cursor: pointer;
   &:hover {
@@ -64,6 +62,8 @@ export default {
 .mask {
   border: 1px solid $tirtiary;
   border-radius: 0.7rem;
+  flex: 0 0 1.4rem;
+  width: 1.4rem;
   height: 1.4rem;
   overflow: hidden;
   transition: height 0.3s;
