@@ -1,7 +1,7 @@
 <template>
   <div
     class="task-item"
-    v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': isNotSelectedTask(), 'is-completed': task.isCompleted }"
+    v-bind:class="{ 'is-selected': isSelectedTask(), 'is-not-selected': !isSelectedTask(), 'is-completed': task.isCompleted }"
   >
     <form @submit="updateTask" class="form">
       <label v-bind:for="task._id" class="input-is-completed">
@@ -71,22 +71,18 @@ export default {
     updateTask(event) {
       event.preventDefault();
       document.activeElement.blur();
+      this.$store.commit("setSelectedTask", null);
       this.$store.dispatch("updateTask", this.task);
     },
     isSelectedTask() {
       return this.selectedTask && this.selectedTask._id === this.task._id;
     },
-    isNotSelectedTask() {
-      return this.selectedTask && this.selectedTask._id !== this.task._id;
-    },
     toggleSelectedTask() {
-      let selectedTask;
       if (this.selectedTask && this.selectedTask === this.task) {
-        selectedTask = null;
+        this.$store.commit("setSelectedTask", null);
       } else {
-        selectedTask = this.task;
+        this.$store.commit("setSelectedTask", this.task);
       }
-      this.$store.commit("setSelectedTask", selectedTask);
     }
   }
 };
