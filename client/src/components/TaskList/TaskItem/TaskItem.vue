@@ -14,7 +14,13 @@
         >
       </label>
       
-      <input class="input-description" type="text" v-model="task.description" @blur="updateTask">
+      <input
+        class="input-description"
+        type="text"
+        v-model="task.description"
+        @blur="updateTask"
+        @focus="selectTask"
+      >
 
       <CustomSelect
         class="select"
@@ -64,6 +70,9 @@ export default {
       }
       this.$store.dispatch("deleteTask", this.task._id);
     },
+    selectTask(task) {
+      this.$store.commit("setSelectedTask", task);
+    },
     onSelectionChange(payload) {
       this.task[payload.name] = payload.value;
       this.$store.dispatch("updateTask", this.task);
@@ -71,6 +80,7 @@ export default {
     updateTask(event) {
       event.preventDefault();
       document.activeElement.blur();
+      this.selectTask(null);
       this.$store.dispatch("updateTask", this.task);
     },
     isSelectedTask() {
@@ -80,13 +90,11 @@ export default {
       return this.selectedTask && this.selectedTask._id !== this.task._id;
     },
     toggleSelectedTask() {
-      let selectedTask;
       if (this.selectedTask && this.selectedTask === this.task) {
-        selectedTask = null;
+        this.selectTask(null);
       } else {
-        selectedTask = this.task;
+        this.selectTask(this.task);
       }
-      this.$store.commit("setSelectedTask", selectedTask);
     }
   }
 };
