@@ -1,5 +1,5 @@
-const PRIORITY_REGEX = new RegExp("![0123](?=\\s|$)", "g");
-const EFFORTS_REGEX = new RegExp("#[1-9](?=\\s|$)", "g");
+const PRIORITY_REGEX = new RegExp("![1-6](?=\\s|$)", "g");
+const EFFORTS_REGEX = new RegExp("#[1-6](?=\\s|$)", "g");
 
 class Task {
   values = "";
