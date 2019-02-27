@@ -115,8 +115,8 @@ li {
 }
 
 .dice-face {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   opacity: 0.5;
   &:hover {
     opacity: 1;
