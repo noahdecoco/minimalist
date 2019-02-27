@@ -6,3 +6,4 @@ client/public
 client/package-lock.json
 client/build
 client/coverage
+.DS_Store
