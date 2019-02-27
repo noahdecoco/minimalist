@@ -5,9 +5,9 @@ class Task {
   values = "";
   description = "";
   notes = "";
-  priorityOptions = 4;
-  priority = 4;
-  effortOptions = 4;
+  priorityOptions = 6;
+  priority = 6;
+  effortOptions = 6;
   effort = 1;
   isCompleted = false;
   createdAt = new Date().getTime().toString();

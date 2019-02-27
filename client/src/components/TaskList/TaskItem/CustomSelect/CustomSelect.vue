@@ -2,11 +2,13 @@
   <div class="select-wrapper">
     <div class="mask">
       <div class="selected-value">
-        <span>{{selectedValue}}</span>
+        <!-- <span>{{selectedValue}}</span> -->
+        <img :src="getImage(selectedValue)" class="dice-face">
       </div>
       <ul>
-        <li v-for="n in options" v-bind:key="n" @click="clickHandler(n)">
-          <span>{{n}}</span>
+        <li v-for="n in 6" v-bind:key="n" @click="clickHandler(n)">
+          <!-- <span>{{n}}</span> -->
+          <img :src="getImage(n)" class="dice-face">
         </li>
       </ul>
     </div>
@@ -28,6 +30,11 @@ export default {
     }
   },
   methods: {
+    getImage(value) {
+      if (value) {
+        return require(`./dice-${value}.svg`);
+      }
+    },
     onChangeHandler() {
       this.$emit("change", {
         name: this.name,
@@ -48,8 +55,8 @@ export default {
 @import "@/styles/colors.scss";
 
 .select-wrapper {
-  width: calc(1.4rem + 2px);
-  height: calc(1.4rem + 2px);
+  width: 1.4rem;
+  height: 1.4rem;
   margin-left: 0.2rem;
   cursor: pointer;
   &:hover {
@@ -61,21 +68,22 @@ export default {
 
 .mask {
   border: 1px solid $tirtiary;
-  border-radius: 0.7rem;
+  border-radius: 0.2rem;
   flex: 0 0 1.4rem;
   width: 1.4rem;
   height: 1.4rem;
   overflow: hidden;
+  box-sizing: border-box;
   transition: height 0.3s;
   background: $primary;
   &:hover {
-    height: 1.4rem * 5;
+    height: 1.4rem * 7;
   }
 }
 
 .selected-value {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: calc(1.4rem - 2px);
+  height: calc(1.4rem - 2px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,10 +107,19 @@ li {
   font-size: 0.8rem;
   color: $tirtiary;
   transition: color 0.2s;
-  width: 1.4rem;
+  width: calc(1.4rem - 2px);
   height: 1.4rem;
   &:hover {
     color: $secondary;
+  }
+}
+
+.dice-face {
+  width: 1.2rem;
+  height: 1.2rem;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
   }
 }
 </style>
